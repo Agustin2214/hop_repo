@@ -1,0 +1,343 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Starships and Vehicles Inventory API",
+      "version": "1.0.0",
+      "description": "API para gestionar el inventario de naves espaciales y vehículos de Star Wars"
+    },
+    "host": "localhost:8080",
+    "basePath": "/api",
+    "schemes": [
+      "http"
+    ],
+    "paths": {
+      "/inventory/vehicles/{id}": {
+        "get": {
+          "summary": "Obtener inventario de vehículos",
+          "description": "Devuelve el inventario de vehículos con el ID especificado.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": "ID del vehículo"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Vehículo encontrado",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "name": { "type": "string", "example": "Sand Crawler" },
+                      "model": { "type": "string", "example": "Digger Crawler" },
+                      "manufacturer": { "type": "string", "example": "Corellia Mining Corporation" },
+                      "cost_in_credits": { "type": "string", "example": "150000" },
+                      "length": { "type": "string", "example": "36.8" },
+                      "crew": { "type": "string", "example": "46" },
+                      "passengers": { "type": "string", "example": "30" },
+                      "cargo_capacity": { "type": "string", "example": "50000" },
+                      "consumables": { "type": "string", "example": "2 months" },
+                      "vehicle_class": { "type": "string", "example": "wheeled" },
+                      "films": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "example": "https://swapi.dev/api/films/1/"
+                        }
+                      },
+                      "created": { "type": "string", "example": "2014-12-10T15:36:25.724000Z" },
+                      "edited": { "type": "string", "example": "2014-12-20T21:30:21.661000Z" },
+                      "url": { "type": "string", "example": "https://swapi.dev/api/vehicles/4/" },
+                      "count": { "type": "integer", "example": 10 }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Vehículo no encontrado"
+            }  
+          }
+        },
+        "put": {
+          "summary": "Actualizar cantidad de vehículos en inventario",
+          "description": "Actualiza la cantidad de vehículos en el inventario con el ID especificado.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": "ID del vehículo"
+            },
+            {
+              "name": "count",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "count": {
+                    "type": "integer",
+                    "description": "Cantidad total de vehículos en el inventario"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Inventario actualizado correctamente"
+            },
+            "400": {
+              "description": "Error en la solicitud"
+            }
+          }
+        }
+      },
+      "/inventory/starships/{id}": {
+        "get": {
+          "summary": "Obtener inventario de naves espaciales",
+          "description": "Devuelve el inventario de naves espaciales con el ID especificado.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": "ID de la nave espacial"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Nave espacial encontrada",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "name": { "type": "string", "example": "Death Star" },
+                      "model": { "type": "string", "example": "DS-1 Orbital Battle Station" },
+                      "manufacturer": { "type": "string", "example": "Imperial Department of Military Research" },
+                      "cost_in_credits": { "type": "string", "example": "1000000000000" },
+                      "length": { "type": "string", "example": "120000" },
+                      "crew": { "type": "string", "example": "342,953" },
+                      "passengers": { "type": "string", "example": "843,342" },
+                      "cargo_capacity": { "type": "string", "example": "1000000000000" },
+                      "consumables": { "type": "string", "example": "3 years" },
+                      "hyperdrive_rating": { "type": "string", "example": "4.0" },
+                      "MGLT": { "type": "string", "example": "10" },
+                      "starship_class": { "type": "string", "example": "Deep Space Mobile Battlestation" },
+                      "films": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "example": "https://swapi.dev/api/films/1/"
+                        }
+                      },
+                      "created": { "type": "string", "example": "2014-12-10T16:36:50.509000Z" },
+                      "edited": { "type": "string", "example": "2014-12-20T21:26:24.783000Z" },
+                      "url": { "type": "string", "example": "https://swapi.dev/api/starships/9/" },
+                      "count": { "type": "integer", "example": 0 }
+                    }
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Nave espacial no encontrada"
+            }
+          }
+        },
+        "put": {
+          "summary": "Actualizar cantidad de naves espaciales en inventario",
+          "description": "Actualiza la cantidad de naves espaciales en el inventario con el ID especificado.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": "ID de la nave espacial"
+            },
+            {
+              "name": "count",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "count": {
+                    "type": "integer",
+                    "description": "Cantidad total de naves espaciales en el inventario"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Inventario actualizado correctamente"
+            },
+            "400": {
+              "description": "Error en la solicitud"
+            }
+          }
+        }
+      },
+      "/inventory/starships/{id}/subtract": {
+        "put": {
+          "summary": "Restar naves espaciales del inventario",
+          "description": "Resta la cantidad especificada de naves espaciales al inventario con el ID especificado.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": "ID de la nave espacial"
+            },
+            {
+              "name": "quantity",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "quantity": {
+                    "type": "integer",
+                    "description": "Cantidad de naves espaciales a restar"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Inventario actualizado correctamente"
+            },
+            "400": {
+              "description": "Error en la solicitud"
+            }
+          }
+        }
+      },
+      "/inventory/starships/{id}/add": {
+        "put": {
+          "summary": "Agregar naves espaciales al inventario",
+          "description": "Agrega la cantidad especificada de naves espaciales al inventario con el ID especificado.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": "ID de la nave espacial"
+            },
+            {
+              "name": "quantity",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "quantity": {
+                    "type": "integer",
+                    "description": "Cantidad de naves espaciales a agregar"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Inventario actualizado correctamente"
+            },
+            "400": {
+              "description": "Error en la solicitud"
+            }
+          }
+        }
+      },
+      "/inventory/vehicles/{id}/subtract": {
+        "put": {
+          "summary": "Restar vehículos del inventario",
+          "description": "Resta la cantidad especificada de vehículos al inventario con el ID especificado.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": "ID del vehículo"
+            },
+            {
+              "name": "quantity",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "quantity": {
+                    "type": "integer",
+                    "description": "Cantidad de vehículos a restar"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Inventario actualizado correctamente"
+            },
+            "400": {
+              "description": "Error en la solicitud"
+            }
+          }
+        }
+      },
+      "/inventory/vehicles/{id}/add": {
+        "put": {
+          "summary": "Agregar vehículos al inventario",
+          "description": "Agrega la cantidad especificada de vehículos al inventario con el ID especificado.",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": "ID del vehículo"
+            },
+            {
+              "name": "quantity",
+              "in": "body",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "quantity": {
+                    "type": "integer",
+                    "description": "Cantidad de vehículos a agregar"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Inventario actualizado correctamente"
+            },
+            "400": {
+              "description": "Error en la solicitud"
+            }
+          }
+        }
+      }
+    }
+  }
+  
+
