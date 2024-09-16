@@ -11,8 +11,8 @@ Este proyecto extiende la API de SWAPI para gestionar el inventario de naves esp
 ### 1. Clonar el Repositorio
 
 ```bash
-git clone 
-cd 
+git clone https://github.com/Agustin2214/hop_repo.git
+
 ```
 
 
